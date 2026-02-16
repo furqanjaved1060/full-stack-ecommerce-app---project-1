@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <title>Document</title> -->
+  </head>
+  <body>
+    <h1>Admin Dashboard Page</h1>
+
+    <!-- Create A Product -->
+    <button type="button" id="create-product-form-open-btn">
+      Create Product
+    </button>
+    <div id="create-product-form-container" style="display: none">
+      <form id="create-product-form">
+        <div>
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" />
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <textarea name="description" id="description"></textarea>
+        </div>
+        <div>
+          <label for="price">Price (in Rs)</label>
+          <input type="number" name="price" id="price" />
+        </div>
+        <div>
+          <label for="discount">Discount (in Rs)</label>
+          <input type="number" name="discount" id="discount" />
+        </div>
+        <div>
+          <label for="stock">Stock</label>
+          <input type="number" name="stock" id="stock" />
+        </div>
+        <div>
+          <label for="brand">Brand</label>
+          <input type="text" name="brand" id="brand" />
+        </div>
+        <div>
+          <label for="category">Category</label>
+          <input type="text" name="category" id="category" />
+        </div>
+        <div>
+          <label for="images">Images</label>
+          <input type="file" name="images" id="images" multiple />
+        </div>
+        <p id="create-product-form-error-element"></p>
+        <button type="button" id="create-product-form-close-btn">Close</button>
+        <button type="submit" id="create-product-form-submit-btn">
+          Submit
+        </button>
+      </form>
+    </div>
+    <!-- Create A Product -->
+
+    <!-- List All Products -->
+    <% if (allProducts.length>0) { %>
+    <ul>
+      <% allProducts.map((c) => { %>
+      <li>
+        <img src="/images/uploads/products/<%=c.images[0]%>" alt="" />
+        <div>
+          <h3><%=c.title%></h3>
+          <p>Rs: <%=c.price%></p>
+          <% if (c.discount && c.price > 0) { %>
+          <p><%= Math.floor((c.discount / c.price) * 100) %>% Off</p>
+          <% } %>
+        </div>
+
+        <!-- Delete This Product -->
+        <button type="button" class="delete-product-btn" data-product-id="<%= c._id %>">
+          Delete Product
+        </button>
+        <!-- Delete This Product -->
+
+        <!-- Update This Product -->
+        <button type="button" class="update-product-form-open-btn">
+          Edit Product
+        </button>
+        <div class="update-product-form-container" style="display: none">
+          <form class="update-product-form" data-product-id="<%= c._id %>">
+            <div>
+              <label for="title">Title</label>
+              <input type="text" name="title" id="title" value="<%=c.title%>" />
+            </div>
+            <div>
+              <label for="description">Description</label>
+              <textarea name="description" id="description">
+                <%=c.description%>
+              </textarea>
+            </div>
+            <div>
+              <label for="price">Price (in Rs)</label>
+              <input
+                type="number"
+                name="price"
+                id="price"
+                value="<%=c.price%>"
+              />
+            </div>
+            <div>
+              <label for="discount">Discount (in Rs)</label>
+              <input
+                type="number"
+                name="discount"
+                id="discount"
+                value="<%=c.discount%>"
+              />
+            </div>
+            <div>
+              <label for="stock">Stock</label>
+              <input
+                type="number"
+                name="stock"
+                id="stock"
+                value="<%=c.stock%>"
+              />
+            </div>
+            <div>
+              <label for="brand">Brand</label>
+              <input type="text" name="brand" id="brand" value="<%=c.brand%>" />
+            </div>
+            <div>
+              <label for="category">Category</label>
+              <input
+                type="text"
+                name="category"
+                id="category"
+                value="<%=c.category%>"
+              />
+            </div>
+            <div>
+              <label for="images">Images</label>
+              <input type="file" name="images" id="images" multiple />
+              <div>
+                <% if (c.images.length>0) c.images.map((curImg) => { %>
+                <img
+                  src="/images/uploads/products/<%=curImg%>"
+                  alt=""
+                  style="width: 200px"
+                />
+                <% }) %>
+              </div>
+            </div>
+            <p id="update-product-form-error-element"></p>
+            <button type="button" id="update-product-form-close-btn">
+              Close
+            </button>
+            <button type="submit" id="update-product-form-submit-btn">
+              Submit
+            </button>
+          </form>
+        </div>
+        <!-- Update This Product -->
+      </li>
+      <% }) %>
+    </ul>
+
+    <%} else { %>
+    <p>No Products Found...</p>
+    <% } %>
+    <!-- List All Products -->
+
+    <script src="/javascript/admin-dashboard-page.js"></script>
+  </body>
+</html>
