@@ -119,3 +119,14 @@ deleteProductBtns.forEach((curBtn) => {
   });
 });
 // ----------------- Delete a product ----------------- //
+
+
+// Active Links
+const links = document.querySelectorAll(".sidebar-nav a");
+const currentPath = window.location.pathname;
+
+links.forEach(link => {
+  if (link.getAttribute("href") === currentPath) {
+    link.classList.add("active");
+  }
+});

@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  font-family: Archivo, "sans-serif";
+}
+
+body {
+  display: flex;
+  max-height: 100vh;
+  font-family: Archivo, "sans-serif";
+}
+
+aside {
+  height: 100vh;
+  padding: 0 16px 16px;
+  min-width: 240px;
+  border-right: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logo-and-nav-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* align-items: center; */
+}
+
+.brand-logo-container {
+  min-height: 100px;
+  background-color: purple;
+  border-bottom: 1px solid gray;
+}
+
+.sidebar-nav > ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sidebar-nav > ul > li > a {
+  display: block;
+  padding: 16px;
+  color: purple;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  border-radius: 16px;
+}
+
+.sidebar-nav > ul > li > a.active {
+  color: white;
+  background-color: purple;
+}
+
+.sidebar-nav > ul > li > a:not(.active):hover {
+  background-color: gainsboro;
+}
+
+.signout-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px;
+  border: 0px;
+  border-radius: 16px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.signout-btn:hover{
+  background-color: gainsboro;
+}
+
+.right-container {
+  width: 100%;
+}
